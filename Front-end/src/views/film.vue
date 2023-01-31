@@ -18,15 +18,20 @@
             Header,
             Film
         },
+        data(){
+            return{
+                film:null
+            }
+        },
         methods:{
-            getFilms(){
-                axios.get("http://localhost/cinehall/Films/getFilms")
+            getFilms:function(){
+                axios.get("http://localhost/cinehall/films/getFilms")
                 .then((res)=>console.log(res));
             }
-
         },
-        mounted:{
-
+        mounted(){
+            this.getFilms();
         }
+
     }
 </script>

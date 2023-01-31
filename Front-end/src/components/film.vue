@@ -24,9 +24,7 @@
 
 <script >
   export default {
-  props: {
-    isUser: String,
-  },
+
 }
 
 
