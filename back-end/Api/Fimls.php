@@ -8,9 +8,9 @@ class Films extends Controller{
         $this->film=$this->model('film');
     }
 
-    function getfilms()
+    function getFilms()
     {
-        $data=$this->film->getfilms();
+        $data=$this->film->getFilms();
         echo json_encode($data);
     }
 
