@@ -1,5 +1,5 @@
 <template>
-  <Header isUser="true" isAdmin="false"/>
+  <Header isUser="false" isGuest="true"/>
 
 <h1>index </h1>
 
