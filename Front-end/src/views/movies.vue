@@ -27,7 +27,10 @@
         methods:{
             getFilms:function(){
                 axios.get("http://localhost/cinehall/movies/getmovies")
-                .then((res)=>this.movies=res.data);
+                .then((res)=>{
+                    this.movies=res.data;
+                    console.log(this.movies);
+                });
             }
         },
         mounted(){

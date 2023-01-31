@@ -5,7 +5,7 @@ class movie extends database{
     {
         $sql = "SELECT `id_f`, f.`nom`, `image`, `date_f`, s.nom FROM `film` f inner join salle s on f.id_s=s.id_s";
         $stmt=$this->openConnection()->query($sql);
-        $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data=$stmt->fetchAll();
         return $data;  
     }
     
