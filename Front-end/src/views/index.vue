@@ -1,7 +1,7 @@
 <template>
-  <Header isUser="false" isGuest="true"/>
+  <Header v-bind:isUser="false" />
 
-<h1>index </h1>
+  <h1>index </h1>
 
 </template>
 
