@@ -2,7 +2,7 @@
     <Header />
     <h1 class="mt-10 mb-9 text-center text-4xl font-extrabold tracking-tight leading-none text-gray-900">Les films</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        <Film />
+        <Movies />
     </div>
     
 
@@ -10,23 +10,25 @@
     
 <script>
     import Header from '@/components/header.vue'
-    import Film from '@/components/film.vue'
+    import Movies from '@/components/movies.vue'
     import axios from 'axios'
     export default {
         name: 'film',
         components:{
             Header,
-            Film
+            Movies
         },
         data(){
             return{
-                film:null
+                movies:null
             }
         },
         methods:{
             getFilms:function(){
-                axios.get("http://localhost/cinehall/films/getFilms")
-                .then((res)=>console.log(res));
+                axios.get("http://localhost/cinehall/movies/getmovies")
+                .then((res)=>{
+                    this.movies=res.data;
+                });
             }
         },
         mounted(){
