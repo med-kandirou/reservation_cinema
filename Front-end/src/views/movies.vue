@@ -2,9 +2,10 @@
     <Header />
     <h1 class="mt-10 mb-9 text-center text-4xl font-extrabold tracking-tight leading-none text-gray-900">Les films</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-        <Movies />
+        <div v-for="movie in movies">
+            <Movies :id_f="movie.id_f" :name="movie.name" :image="movie.image" :date="movie.date" />
+        </div>      
     </div>
-    
 
 </template>
     
@@ -20,15 +21,13 @@
         },
         data(){
             return{
-                movies:null
+                movies:''
             }
         },
         methods:{
             getFilms:function(){
                 axios.get("http://localhost/cinehall/movies/getmovies")
-                .then((res)=>{
-                    this.movies=res.data;
-                });
+                .then((res)=>this.movies=res.data);
             }
         },
         mounted(){
