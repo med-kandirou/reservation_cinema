@@ -2,13 +2,11 @@
 class User extends database{
 
     function register($token,$nom,$email){
-        $sql = "INSERT INTO `user`(`token`, `nom`, `email`, `role`) VALUES (:token,:nom,:email,:role)";
+        $sql = "INSERT INTO `user`(`token`, `nom`, `email`) VALUES (:token,:nom,:email)";
         $stmt=$this->openConnection()->prepare($sql);
         $stmt->bindParam(':token', $token);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':email', $email);
-        $role=1;
-        $stmt->bindParam(':role', $role);
         if($stmt->execute()){
             return $token;
         }
@@ -18,7 +16,7 @@ class User extends database{
         $feedback=[
             'isTrue'=>false
         ];
-        $sql = "SELECT token ,`nom`, `email`, `role` FROM `user` WHERE `token`=:token";
+        $sql = "SELECT token ,`nom`, `email` FROM `user` WHERE `token`=:token";
         $stmt=$this->openConnection()->prepare($sql);
         $stmt->bindParam(':token', $token);
         $stmt->execute();
@@ -29,7 +27,6 @@ class User extends database{
                 'token'=>$res['token'],
                 'nom'=>$res['nom'],
                 'email'=>$res['email'],
-                'role'=>$res['role'],
             ];
             return $feedback;
         }

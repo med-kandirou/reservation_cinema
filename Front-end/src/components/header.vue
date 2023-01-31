@@ -33,8 +33,8 @@
 <script >
   export default {
   props: {
+    isGuest: String,
     isUser: String,
-    isAdmin: String
   },
 }
 
