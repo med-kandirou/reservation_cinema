@@ -28,7 +28,8 @@
                 .then((res)=>{
                     this.movies=res.data;
                 });
-            },reserver:function(id){
+            },
+            reserver:function(id){
                 if(!Cookies.get('token')){
                     this.$swal.fire(
                         'Infomartion',
@@ -41,10 +42,8 @@
                     })
                 }
                 else{
-                    this.$router.push('/reservation');
+                    this.$router.push('/reservation/'+id);
                 }
-                // axios.get("http://localhost/cinehall/movies/getmovies")
-                // .then((res)=>{});
             }
         },
         mounted(){
