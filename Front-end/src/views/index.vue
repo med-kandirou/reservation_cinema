@@ -1,5 +1,4 @@
 <template>
-  <Header v-bind:isUser="false" />
 
   <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
@@ -90,11 +89,10 @@
 </template>
 
 <script>
-  import Header from '@/components/header.vue'
   export default {
     name:'index',
     components:{
-      Header
+      
     }
   }
 

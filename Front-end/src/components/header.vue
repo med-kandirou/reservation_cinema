@@ -34,9 +34,9 @@
 
 </template>
 
-<script >
+<script>
   export default {
-  props: {
+  props:{
     isUser: String,
   },
 }

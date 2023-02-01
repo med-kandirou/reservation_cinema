@@ -1,6 +1,6 @@
 <template>
     
-    <Header v-bind:isUser="false" />
+
     <div class="grid place-items-center z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
         <div class="w-full h-full max-w-md md:h-auto">
             <!-- Modal content -->
@@ -37,12 +37,10 @@
 
 
 <script>
-import Header from '../components/header.vue'
 import axios from 'axios'
 export default {
     name: 'register',
     components:{
-      Header
     },
     data() {
         return {
