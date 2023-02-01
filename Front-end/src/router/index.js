@@ -3,6 +3,7 @@ import index from '../views/index.vue'
 import login from '../views/login.vue'
 import register from '../views/register.vue'
 import movies from '../views/movies.vue'
+import reservation from '../views/reservation.vue'
 const routes = [
   {
     path: '/',
@@ -22,6 +23,11 @@ const routes = [
     path: '/movies',
     name: 'movies',
     component: movies
+  },
+  {
+    path: '/reservation',
+    name: 'reservation',
+    component: reservation
   }
 ]
 

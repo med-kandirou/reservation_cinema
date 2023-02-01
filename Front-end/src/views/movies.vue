@@ -41,9 +41,7 @@
                     })
                 }
                 else{
-                    
-                    //this.$router.push('/reservation');
-                    console.log("reservation");
+                    this.$router.push('/reservation');
                 }
                 // axios.get("http://localhost/cinehall/movies/getmovies")
                 // .then((res)=>{});
