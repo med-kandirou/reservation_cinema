@@ -26,7 +26,7 @@
     
 </template>
 
-<script>
+<script >
     import Cookies from "vue-cookies";
     import axios from 'axios'
   export default {

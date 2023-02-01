@@ -8,7 +8,7 @@
 
 </template>
     
-<script>
+<script >
     import Cookies from "vue-cookies";
     import Movies from '@/components/movies.vue'
     import axios from 'axios'
