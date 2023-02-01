@@ -1,11 +1,11 @@
 <?php
 
-class movies extends Controller{
+class Movies extends Controller{
     private $movie;
 
     function __construct()
     {
-        $this->movie=$this->model('movie');
+        $this->movie=$this->model('Movie');
     }
 
     function getmovies()
