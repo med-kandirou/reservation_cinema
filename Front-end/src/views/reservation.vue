@@ -4,17 +4,14 @@
 
     <div class="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-10">
         <div v-for="n in 50">
-            <div v-if="n%2==0">
-                <Chair color="green" /><br>
-            </div>  
+            <div v-if="checkplace(n)" >
+                <Chair color="red" :nombre="-1" @reserver="reserver" /><br>
+            </div>
             <div v-else >
-                <Chair color="black" /><br>
-            </div> 
+                <Chair color="black" :nombre="n" /><br>
+            </div>
         </div>      
-    </div>
-
-
-
+    </div>      
 </template>
 
 <script >
@@ -30,12 +27,27 @@ export default {
     components:{
         Chair
     },
+    emits:['reserver'],
+    methods:{
+        checkplace:function(num){
+            let res=false;
+            for (let i = 0; i < this.places.length; i++) {
+                if(num==this.places[i].num_place){
+                    return true;
+                }
+            }
+            return res
+        },
+        reserver:function(id_p){
+            console.log(id_p);
+        }
+    },
     mounted(){
         var data= new FormData();
         data.append('id_f',this.$route.params.id);
         axios.post("http://localhost/cinehall/Reservations/placeReservedByFilm",data)
         .then((res)=>{
-            console.log(res)
+            this.places=res.data;
         });
     }
 }

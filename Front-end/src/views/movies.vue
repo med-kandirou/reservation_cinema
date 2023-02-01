@@ -2,7 +2,7 @@
     <h1 class="mt-10 mb-9 text-center text-4xl font-extrabold tracking-tight leading-none text-gray-900">Les films</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div v-for="movie in movies">
-            <Movies @reserver="reserver" :id_f="movie.id_f" :name="movie.nom_film" :image="movie.image" :date="movie.date_f" :salle="movie.nom_salle" />
+            <Movies @getfilm="getfilm" :id_f="movie.id_f" :name="movie.nom_film" :image="movie.image" :date="movie.date_f" :salle="movie.nom_salle" />
         </div>      
     </div>
 
@@ -29,7 +29,7 @@
                     this.movies=res.data;
                 });
             },
-            reserver:function(id){
+            getfilm:function(id){
                 if(!Cookies.get('token')){
                     this.$swal.fire(
                         'Infomartion',
