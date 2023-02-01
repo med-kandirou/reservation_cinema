@@ -20,7 +20,6 @@ export default {
         axios.post("http://localhost/cinehall/Reservations/placeReservedByFilm",data)
         .then((res)=>{console.log(res)});
     }
-    
 }
 </script>
 
