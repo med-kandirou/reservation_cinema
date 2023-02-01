@@ -37,7 +37,7 @@
 <script>
   export default {
   props:{
-    isUser: String,
+    isUser: Boolean,
   },
 }
 
