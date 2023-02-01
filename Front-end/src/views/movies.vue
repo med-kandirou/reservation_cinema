@@ -9,6 +9,7 @@
 </template>
     
 <script>
+    import Cookies from "vue-cookies";
     import Movies from '@/components/movies.vue'
     import axios from 'axios'
     export default {
@@ -28,9 +29,24 @@
                     this.movies=res.data;
                 });
             },reserver:function(id){
+                if(!Cookies.get('token')){
+                    this.$swal.fire(
+                        'Infomartion',
+                        'Pour réserver ,connectez-vous !',
+                        'info'
+                    ).then((result) => {
+                        if (result.isConfirmed) {
+                            this.$router.push('/login');
+                        } 
+                    })
+                }
+                else{
+                    
+                    //this.$router.push('/reservation');
+                    console.log("reservation");
+                }
                 // axios.get("http://localhost/cinehall/movies/getmovies")
                 // .then((res)=>{});
-                console.log(id);
             }
         },
         mounted(){
