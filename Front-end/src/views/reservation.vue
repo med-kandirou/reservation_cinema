@@ -1,29 +1,30 @@
 <template>
     <h1 class="mt-10 mb-9 text-center text-4xl font-extrabold tracking-tight leading-none text-gray-900">Réservation des palces</h1>
 
-
+    <h1>les nombres de place vide :{{ place_vide }}</h1>
     <div class="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-10">
         <div v-for="n in 50">
             <div v-if="checkplace(n)" >
-                <Chair color="red" :nombre="n" @click="reserver(n)" /><br>
+                <Chair color="red" :nombre="-1" @reserver="reserver" /><br>
             </div>
             <div v-else >
-                <Chair color="black" nombre="-1" @reserver="reserver" /><br>
+                <Chair color="black" :nombre="n" @reserver="reserver" /><br>
             </div>
         </div>      
     </div>      
 
-    <button @click="reserver">dfgh</button>
 </template>
 
 <script >
+import Cookies from "vue-cookies";
 import axios from "axios";
 import Chair from '@/components/chair.vue'
 export default {
     name:'reservation',
     data(){
         return{  
-            places:''
+            places:'',
+            place_vide:null
         }
     },
     components:{
@@ -31,6 +32,22 @@ export default {
     },
 
     methods:{
+        getplaces:function(){
+            var data= new FormData();
+            data.append('id_f',this.$route.params.id);
+            axios.post("http://localhost/cinehall/Reservations/placeReservedByFilm",data)
+            .then((res)=>{
+                this.places=res.data;
+            });
+        },
+        getplacesVides:function(){
+            var data= new FormData();
+            data.append('id_f',this.$route.params.id);
+            axios.post("http://localhost/cinehall/Reservations/getplacesVides",data)
+            .then((res)=>{
+                this.place_vide=50-res.data.nbr_place;
+            });
+        },
         checkplace:function(num){
             let res=false;
             for (let i = 0; i < this.places.length; i++) {
@@ -41,16 +58,41 @@ export default {
             return res
         },
         reserver(nbr_place){
-            console.log(nbr_place);
+            if(nbr_place==-1){
+                this.$swal.fire(
+                    'Oops!!',
+                    'Cette place est reservé',
+                    'error'
+                )
+            }
+            else{
+                this.$swal.fire({
+                title: 'Reservation du place '+nbr_place+'',
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var data= new FormData();
+                        data.append('token',Cookies.get('token'));
+                        data.append('id_f',this.$route.params.id);
+                        data.append('num_place',nbr_place);
+                        axios.post("http://localhost/cinehall/Reservations/reserver",data)
+                        .then((res)=>{
+                            if(res.data.etat=='reserver'){
+                                this.getplaces();
+                                this.getplacesVides();
+                            }
+                            
+                        });  
+                        this.$swal.fire('Réserver avec succes!', '', 'success');  
+                    }
+                })   
+            }
         }
     },
     mounted(){
-        var data= new FormData();
-        data.append('id_f',this.$route.params.id);
-        axios.post("http://localhost/cinehall/Reservations/placeReservedByFilm",data)
-        .then((res)=>{
-            this.places=res.data;
-        });
+        this.getplaces();
+        this.getplacesVides();
     }
 }
 </script>

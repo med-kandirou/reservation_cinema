@@ -52,7 +52,16 @@ export default {
         register: function () {
             if(this.nom=='' || this.email=='' ){
                 this.valid=true;
-            }else{
+            }
+            else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)==false){
+                this.$swal.fire(
+                    'erreur!',
+                    'Email invalid !',
+                    'error'
+                )
+                return;
+            }
+            else{
                 this.valid=false;
                 var data=new FormData();
                 data.append('nom',this.nom);
