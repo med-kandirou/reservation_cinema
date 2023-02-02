@@ -5,13 +5,15 @@
     <div class="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-10">
         <div v-for="n in 50">
             <div v-if="checkplace(n)" >
-                <Chair color="red" :nombre="-1" @reserver="reserver" /><br>
+                <Chair color="red" :nombre="n" @click="reserver(n)" /><br>
             </div>
             <div v-else >
-                <Chair color="black" :nombre="n" /><br>
+                <Chair color="black" nombre="-1" @reserver="reserver" /><br>
             </div>
         </div>      
     </div>      
+
+    <button @click="reserver">dfgh</button>
 </template>
 
 <script >
@@ -27,7 +29,7 @@ export default {
     components:{
         Chair
     },
-    emits:['reserver'],
+
     methods:{
         checkplace:function(num){
             let res=false;
@@ -38,8 +40,8 @@ export default {
             }
             return res
         },
-        reserver:function(id_p){
-            console.log(id_p);
+        reserver(nbr_place){
+            console.log(nbr_place);
         }
     },
     mounted(){
