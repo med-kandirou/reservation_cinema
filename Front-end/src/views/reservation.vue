@@ -1,6 +1,5 @@
 <template>
     <h1 class="mt-10 mb-9 text-center text-4xl font-extrabold tracking-tight leading-none text-gray-900">Réservation des palces</h1>
-
     <h1 class="font-extrabold tracking-tight text-gray-900 ml-10">les nombres de place vide sont :{{ place_vide }}</h1>
     <img class="mx-auto" id="image"  src="@/assets/images/television.png" />
     <div class="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-10">
@@ -19,6 +18,7 @@
 </template>
 
 <script >
+import moment from 'moment'
 import Cookies from "vue-cookies";
 import axios from "axios";
 import Chair from '@/components/chair.vue'
