@@ -14,11 +14,12 @@ class Movies extends Controller{
         echo json_encode($data);
     }
 
-    function getfilmsbyid()
+    function filtreMovies()
     {
-        $id=$_POST['id_f'];
-        $data=$this->movie->getfilmsbyid($id);
+        $date=$_POST['date'];
+        $data=$this->movie->filtreMovies($date);
         echo json_encode($data);
     }
+
 
 } 
