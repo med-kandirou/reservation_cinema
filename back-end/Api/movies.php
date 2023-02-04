@@ -10,16 +10,9 @@ class Movies extends Controller{
 
     function getmovies()
     {
-        $data=$this->movie->getmovies();
-        echo json_encode($data);
-    }
-
-    function filtreMovies()
-    {
         $date=$_POST['date'];
-        $data=$this->movie->filtreMovies($date);
+        $data=$this->movie->getmovies($date);
         echo json_encode($data);
     }
-
 
 } 
