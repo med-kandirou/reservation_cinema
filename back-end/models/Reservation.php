@@ -34,4 +34,15 @@ class Reservation extends database{
             return $data;
         }
     }
+
+    function mesreservations($token)
+    {
+        $sql = "SELECT `id_res`, `date_res`, `id_f`, `num_place` FROM `reservation` where token=:token";
+        $stmt=$this->openConnection()->prepare($sql);
+        $stmt->bindParam(':token',$token);
+        if($stmt->execute()){
+            $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        }
+    }
 }

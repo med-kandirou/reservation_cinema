@@ -33,6 +33,14 @@ class Reservations extends Controller{
         echo json_encode($nombre);
     }
 
+
+    function mesreservations()
+    {
+        $token=$_POST['token'];
+        $data=$this->Reservation->mesreservations($token);
+        echo json_encode($data);
+    }
+
     
 
 } 

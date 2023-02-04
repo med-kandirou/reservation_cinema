@@ -4,6 +4,7 @@ import login from '../views/login.vue'
 import register from '../views/register.vue'
 import movies from '../views/movies.vue'
 import reservation from '../views/reservation.vue'
+import mesReservations from '../views/mesReservations.vue'
 const routes = [
   {
     path: '/',
@@ -28,6 +29,11 @@ const routes = [
     path: '/reservation/:id',
     name: 'reservation',
     component: reservation
+  },
+  {
+    path: '/mesReservations',
+    name: 'mesReservations',
+    component: mesReservations
   }
 ]
 
