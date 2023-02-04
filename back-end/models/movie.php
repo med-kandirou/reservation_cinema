@@ -11,13 +11,12 @@ class movie extends database{
 
     function filtreMovies($date)
     {
-        //ana hna
         $date=$_POST['date'];
         $sql = "SELECT f.`id_f`, f.`nom`, f.`image`, f.`date_f`, s.nom FROM `film` f inner join salle s on s.id_s=f.id_s and f.date_f=:date_f";
         $stmt=$this->openConnection()->prepare($sql);
+        $stmt->bindParam('date_f',$date);
         $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;  
-
     }
     
 }

@@ -39,9 +39,11 @@
                     )
                 }
                 else{
-                    axios.get("http://localhost/cinehall/movies/filtreMovies")
+                    var data=new FormData();
+                    data.append('date',this.date);
+                    axios.post("http://localhost/cinehall/movies/filtreMovies",data)
                     .then((res)=>{
-                        this.movies=res.data;
+                        console.log(res);
                     });
                 }
             },
