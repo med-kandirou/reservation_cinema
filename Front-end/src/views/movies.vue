@@ -48,9 +48,11 @@
                 }
             },
             getFilms:function(){
-                axios.get("http://localhost/cinehall/movies/getmovies")
+                let currentDate = new Date().toJSON().slice(0, 10);
+                axios.post("http://localhost/cinehall/movies/getmovies",currentDate)
                 .then((res)=>{
                     this.movies=res.data;
+                    //console.log(res);
                 });
             },
             getfilm:function(id){
