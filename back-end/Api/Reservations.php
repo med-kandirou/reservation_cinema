@@ -41,6 +41,18 @@ class Reservations extends Controller{
         echo json_encode($data);
     }
 
+
+    function delete_res()
+    {
+        if($_SERVER["REQUEST_METHOD"] == "DELETE"){
+            parse_str(file_get_contents("php://input"),$data);
+            $id_res=$data['id_res'];
+            echo json_encode($id_res);
+            // if($this->Reservation->delete_res($id_res)){
+            //     echo json_encode(['etat'=>'deleted']);
+            // }
+        }
+    }
     
 
 } 

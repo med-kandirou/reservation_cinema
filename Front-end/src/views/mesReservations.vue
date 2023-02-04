@@ -37,7 +37,13 @@ export default {
             }
         },
         delete_res:function(id_r){
-            console.log(id_r);
+            var data= new FormData();
+            data.append('id_res',id_r);
+            axios.delete("http://localhost/cinehall/Reservations/delete_res",data)
+            .then((res)=>{
+                // this.reservations=res.data;
+                console.log(res);
+            });
         }
     },mounted(){
         this.mesreservations();

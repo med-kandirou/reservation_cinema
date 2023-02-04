@@ -45,4 +45,16 @@ class Reservation extends database{
             return $data;
         }
     }
+
+    
+
+    function delete_res($id_res)
+    {
+        $sql = "DELETE FROM `reservation` WHERE `id_res`=:id_res";
+        $stmt=$this->openConnection()->prepare($sql);
+        $stmt->bindParam(':id_res',$id_res);
+        if($stmt->execute()){
+            return true;
+        }
+    }
 }
