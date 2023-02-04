@@ -37,9 +37,14 @@ export default {
             }
         },
         delete_res:function(id_r){
-            var data= new FormData();
-            data.append('id_res',id_r);
-            axios.delete("http://localhost/cinehall/Reservations/delete_res",data)
+            //ana hna 
+            const form = new FormData();
+            form.append('id_res',id_r);
+            axios({
+                url:'http://localhost/cinehall/Reservations/delete_res',
+                data:form,
+                method:'DELETE'
+            })
             .then((res)=>{
                 // this.reservations=res.data;
                 console.log(res);
