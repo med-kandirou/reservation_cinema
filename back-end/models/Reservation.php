@@ -37,7 +37,7 @@ class Reservation extends database{
 
     function mesreservations($token)
     {
-        $sql = "SELECT `id_res`, `date_res`, `id_f`, `num_place` FROM `reservation` where token=:token";
+        $sql = "SELECT r.`id_res`, r.`date_res`, f.nom as 'nom_film',f.image ,s.nom as 'salle', r.`num_place` , r.`token` FROM `reservation` r inner join film f on f.id_f=r.id_f inner join salle s on s.id_s=f.id_s where r.token=:token";
         $stmt=$this->openConnection()->prepare($sql);
         $stmt->bindParam(':token',$token);
         if($stmt->execute()){
