@@ -39,6 +39,14 @@
                     )
                     this.currentDate = new Date().toJSON().slice(0, 10);
                 }
+                else if(this.currentDate<new Date().toJSON().slice(0, 10)){
+                    this.$swal.fire(
+                    'erreur!',
+                    'La date selectionné est dépassé !',
+                    'error'
+                    )
+                    this.currentDate = new Date().toJSON().slice(0, 10);
+                }
                 else{
                     var data=new FormData();
                     data.append('date',this.currentDate);

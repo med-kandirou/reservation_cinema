@@ -18,7 +18,6 @@
 </template>
 
 <script >
-import moment from 'moment'
 import Cookies from "vue-cookies";
 import axios from "axios";
 import Chair from '@/components/chair.vue'
