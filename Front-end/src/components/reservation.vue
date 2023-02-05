@@ -17,7 +17,7 @@
 </template>
 
 
-<script>
+<script >
 export default {
     props: {
         id_res: Number,
