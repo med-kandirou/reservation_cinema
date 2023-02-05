@@ -37,17 +37,13 @@ export default {
             }
         },
         delete_res:function(id_r){
-            //ana hna 
             const form = new FormData();
             form.append('id_res',id_r);
-            axios({
-                url:'http://localhost/cinehall/Reservations/delete_res',
-                data:form,
-                method:'DELETE'
-            })
+            axios.post('http://localhost/cinehall/Reservations/delete_res',form)
             .then((res)=>{
-                // this.reservations=res.data;
-                console.log(res);
+                if(res.data='deleted'){
+                    this.mesreservations();
+                }
             });
         }
     },mounted(){
