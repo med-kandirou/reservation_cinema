@@ -1,5 +1,9 @@
 <?php
-    
+
+
+
+use Firebase\JWT\JWT;
+
 class Users extends Controller implements helpers {
     private $user;
 
@@ -8,15 +12,11 @@ class Users extends Controller implements helpers {
         $this->user=$this->model('User');
     }
 
-    public function getRandomToken($nom,$email)
+    public function getRandomToken($data)
     {
-        $characters = $nom.'23431428745'.$email;
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < 10; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
+        $key='vDoWNVvoLBuil_L6v3vWDm4AwQz86v1vdU9wukQanGT8yYudqDPPeKJwFaXL-Nie';
+        $jwt=JWT::encode($data,$key,'HS256');
+        return $jwt;
     }
 
     function login()
@@ -27,10 +27,12 @@ class Users extends Controller implements helpers {
     }
 
     function register(){
-        $nom=$_POST['nom'];
-        $email=$_POST['email'];
-        $token=$this->getRandomToken($nom,$email);
-        $data=$this->user->register($token,$nom,$email);
+        $data=[
+            'nom'=>$_POST['nom'],
+            'email'=>$_POST['email']
+        ];
+        $token=$this->getRandomToken($data);
+        $data=$this->user->register($token,$data['nom'],$data['email']);
         echo json_encode($data);
     }
 } 

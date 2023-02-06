@@ -3,6 +3,6 @@
 
 interface helpers
 {
-    public function getRandomToken($nom,$email);
+    public function getRandomToken($data);
    
 }

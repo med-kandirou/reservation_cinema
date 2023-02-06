@@ -7,6 +7,7 @@
   require_once 'interface/helpers.php';
   require_once 'libraries/controller.php';
   require_once 'libraries/database.php';
+  require_once '../vendor/autoload.php';
 
 
 
