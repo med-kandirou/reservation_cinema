@@ -39,12 +39,19 @@ export default {
         delete_res:function(id_r){
             const form = new FormData();
             form.append('id_res',id_r);
-            axios.post('http://localhost/cinehall/Reservations/delete_res',form)
-            .then((res)=>{
-                if(res.data='deleted'){
+            axios({
+                method: 'delete',
+                url: 'http://localhost/cinehall/Reservations/delete_res',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data: form,
+            })
+            .then((res) =>{
+                if(res.data.etat=='deleted'){
                     this.mesreservations();
                 }
-            });
+            })
         }
         
     },mounted(){
