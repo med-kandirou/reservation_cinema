@@ -31,7 +31,7 @@ class Users extends Controller implements helpers {
             'nom'=>$_POST['nom'],
             'email'=>$_POST['email']
         ];
-        $token=$this->getRandomToken($data);
+        $token=$this->getToken($data);
         $data=$this->user->register($token,$data['nom'],$data['email']);
         echo json_encode($data);
     }
