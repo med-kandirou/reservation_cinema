@@ -12,7 +12,7 @@ class Users extends Controller implements helpers {
         $this->user=$this->model('User');
     }
 
-    public function getRandomToken($data)
+    public function getToken($data)
     {
         $key='vDoWNVvoLBuil_L6v3vWDm4AwQz86v1vdU9wukQanGT8yYudqDPPeKJwFaXL-Nie';
         $jwt=JWT::encode($data,$key,'HS256');
