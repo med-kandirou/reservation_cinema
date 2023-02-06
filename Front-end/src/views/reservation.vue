@@ -69,7 +69,7 @@ export default {
             }
             else{
                 this.$swal.fire({
-                title: 'Vous-etss sur de reserver la place '+nbr_place+' ?',
+                title: 'Vous-etes sur de reserver la place '+nbr_place+' ?',
                 showCancelButton: true,
                 confirmButtonText: 'Save',
                 }).then((result) => {
