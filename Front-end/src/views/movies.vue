@@ -6,7 +6,7 @@
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div v-for="movie in movies">
-            <Movies @getfilm="getfilm" :id_f="movie.id_f" :name="movie.nom_film" :image="movie.nom_film" :date="movie.date_f" :salle="movie.nom_salle" />
+            <Movies @getfilm="getfilm" :id_f="movie.id_f" :name="movie.nom_film" :image="movie.image" :date="movie.date_f" :salle="movie.nom_salle" />
         </div>      
     </div>
 

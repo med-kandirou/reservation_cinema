@@ -24,6 +24,7 @@
 
 
 <script>
+
   export default {
     props:{
         id_f:Number,
