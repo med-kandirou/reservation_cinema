@@ -62,7 +62,7 @@
                             'success'
                         ).then((result) => {
                             if (result.isConfirmed) {
-                                this.$router.push('/movies');
+                                location.href='/movies';
                             } 
                         })
                     }

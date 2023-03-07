@@ -51,6 +51,7 @@
 </template>
 
 <script>
+  import { initCarousels, initCollapses, initDials, initDismisses, initDrawers, initDropdowns, initModals, initPopovers, initTabs, initTooltips } from 'flowbite'
   import Cookies from "vue-cookies";
   export default {
   props:{
@@ -65,6 +66,16 @@
   mounted(){
     this.nom=Cookies.get('nom');
     this.email=Cookies.get('email');
+    initCarousels();
+    initCollapses();
+    initDials();
+    initDismisses();
+    initDrawers();
+    initDropdowns();
+    initModals();
+    initPopovers();
+    initTabs();
+    initTooltips();
   },
   methods:{
     logout:function(){
