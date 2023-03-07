@@ -32,7 +32,13 @@ class Users extends Controller implements helpers {
             'email'=>$_POST['email']
         ];
         $token=$this->getToken($data);
-        $data=$this->user->register($token,$data['nom'],$data['email']);
-        echo json_encode($data);
+        try {$data=$this->user->register($token,$data['nom'],$data['email']);
+            echo json_encode($data);
+        }
+        catch(Exception)
+        {
+            echo json_encode(" Account Not Created");
+
+        }
     }
 } 
