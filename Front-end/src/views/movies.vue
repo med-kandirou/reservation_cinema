@@ -4,7 +4,7 @@
     <div class="flex justify-end mb-10 mr-10">
         <input :min="mindate" type="date" @change="getmovies" v-model="currentDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    <div class="ml-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <div v-for="movie in movies">
             <Movies @getfilm="getfilm" :id_f="movie.id_f" :name="movie.nom_film" :image="movie.image" :date="movie.date_f" :salle="movie.nom_salle" />
         </div>      
@@ -48,7 +48,6 @@
                         this.movies=res.data;
                     });
                 }
-                alert(this.currentDate);
             },
             getfilm:function(id){
                 if(!Cookies.get('token')){
